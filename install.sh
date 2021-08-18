@@ -2,17 +2,17 @@
 
 basedir=$(cd `dirname $0`;pwd)
 scriptdir=$basedir/scripts
-installdir=/opt/nft360
+installdir=/opt/deer
 
 install_scripts()
 {
-	echo "----------Install nft360----------"
+	echo "----------Install deer----------"
 
-	if [ -f /usr/bin/nft360 ]; then
-		rm /usr/bin/nft360
+	if [ -f /usr/bin/deer ]; then
+		rm /usr/bin/deer
 		rm -rf $installdir/scripts
 	fi
-	echo "Install nft360 data"
+	echo "Install deer data"
 	mkdir -p $installdir
 	if [ -f $installdir/config.json ]; then
 		# cp $installdir/config.json $installdir/config.json.bak 
@@ -21,10 +21,10 @@ install_scripts()
 	fi
 	cp -r $basedir/scripts $installdir/scripts
 
-	echo "Install nft360 command line tool"
-	chmod +x $installdir/scripts/nft360.sh
-	ln -s $installdir/scripts/nft360.sh /usr/bin/nft360
-	nft360 install 
+	echo "Install deer command line tool"
+	chmod +x $installdir/scripts/deer.sh
+	ln -s $installdir/scripts/deer.sh /usr/bin/deer
+	deer install 
 
 	echo "----------Install success----------"
 }

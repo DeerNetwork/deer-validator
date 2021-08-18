@@ -6,23 +6,23 @@
 - One Linux server with 32 GB memory and 500GB hard disk
 - A browser with Polkadot{.js} extension, such as Chrome，Firefox
 
-#### Install the nft360 Scripts
+#### Install the deer Scripts
 
-Go to the **nft360** folder
+Go to the **deer** folder
 
 ```bash
 chmod +x install.sh
 sudo ./install.sh
 ```
 
-#### Config nft360 node
+#### Config deer node
 
 ```bash
-sudo nft360 config set
+sudo deer config set
 ```
 
-#### Start nft360 node
+#### Start deer node
 
 ```bash
-sudo nft360 start
+sudo deer start
 ```

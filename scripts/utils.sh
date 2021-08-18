@@ -1,6 +1,6 @@
 #!/bin/bash
 service_images=( 
-	"chain:nft360/nft360"
+	"chain:deernetwork/deer"
 )
 
 

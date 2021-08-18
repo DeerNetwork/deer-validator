@@ -29,7 +29,7 @@ download_docker_images()
 	log_info "----------Download docker images----------"
 	local res=0
 
-	docker pull nft360/nft360
+	docker pull deernetwork/deer
 	res=$(($?|$res))
 
 	if [ $res -ne 0 ]; then

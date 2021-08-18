@@ -4,27 +4,27 @@ update_help()
 {
 cat << EOF
 Usage:
-	update scripts	update nft360 scripts
-	update chain  	update nft360 chain
+	update scripts	update deer scripts
+	update chain  	update deer chain
 EOF
 }
 
 
 update_scripts()
 {
-	log_info "----------Update nft360 script----------"
+	log_info "----------Update deer script----------"
 
-	mkdir -p /tmp/nft360
-	wget https://github.com/nft360/nft360-validator/archive/main.zip -O /tmp/nft360/main.zip
-	unzip /tmp/nft360/main.zip -d /tmp/nft360
-	rm -rf /opt/nft360/scripts
-	cp -r /tmp/nft360/nft360-validator-main/scripts /opt/nft360/scripts
-	mv /opt/nft360/scripts/nft360.sh /usr/bin/nft360
-	chmod +x /usr/bin/nft360
-	chmod +x /opt/nft360/scripts/*
+	mkdir -p /tmp/deer
+	wget https://github.com/DeerNetwork/deer-validator/archive/main.zip -O /tmp/deer/main.zip
+	unzip /tmp/deer/main.zip -d /tmp/deer
+	rm -rf /opt/deer/scripts
+	cp -r /tmp/deer/deer-validator-main/scripts /opt/deer/scripts
+	mv /opt/deer/scripts/deer.sh /usr/bin/deer
+	chmod +x /usr/bin/deer
+	chmod +x /opt/deer/scripts/*
 
 	log_success "----------Update success----------"
-	rm -rf /tmp/nft360
+	rm -rf /tmp/deer
 }
 
 

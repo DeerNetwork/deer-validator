@@ -29,8 +29,8 @@ config_set_all()
 
 	line=$((line+1))
 	local chain_data_dir=""
-	read -p "Enter your chain_data_dir [/opt/nft360/data/chain]: " chain_data_dir
-	chain_data_dir=`echo "${chain_data_dir:-"/opt/nft360/data/chain"}"`
+	read -p "Enter your chain_data_dir [/opt/deer/data/chain]: " chain_data_dir
+	chain_data_dir=`echo "${chain_data_dir:-"/opt/deer/data/chain"}"`
 	mkdir -p "$chain_data_dir" > /dev/null 2>&1
 	if [[ ! -d "$chain_data_dir" ]]; then
 		log_err "The chain_data_dir is invalid"
