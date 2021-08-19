@@ -1,6 +1,6 @@
 #!/bin/bash
 service_images=( 
-	"chain:deernetwork/deer"
+	"chain:deernetwork/deer-node"
 )
 
 
