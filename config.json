@@ -1,6 +1,5 @@
 {
   "nodename" : "",
   "chain_data_dir": "",
-  "chain_args": "--chain testnet",
-  "ipfs_boot_node": "/dnsaddr/bootstrap.libp2p.io/p2p/QmNnooDu7bfjPFoTZYxMNLWUQJyrVwtbZg5gBMjTezGAJN"
+  "chain_args": ""
 }

@@ -2,6 +2,7 @@
 
 installdir=/opt/deer
 scriptdir=$installdir/scripts
+config_json=$installdir/config.json
 
 source $scriptdir/utils.sh
 source $scriptdir/config.sh
@@ -44,10 +45,10 @@ start_chain()
 		return
 	fi
 	log_info "---------Start chain----------"
-	local node_name=$(cat $installdir/config.json | jq -r '.nodename')
+	local node_name=$(cat $config_json | jq -r '.nodename')
 	if [ -z $node_name ]; then
 		config_set_all
-		local node_name=$(cat $installdir/config.json | jq -r '.nodename')
+		local node_name=$(cat $config_json | jq -r '.nodename')
 	fi
 
 	log_info "your node name:$node_name"
@@ -57,10 +58,11 @@ start_chain()
 		exit 0
 	fi
 
-	local chain_data_dir=$(cat $installdir/config.json | jq -r '.chain_data_dir')
-	local chain_args=$(cat $installdir/config.json | jq -r '.chain_args')
-	docker run -d --net host --name chain -e NODE_NAME=$node_name -v $chain_data_dir:/root/data deernetwork/deer \
-		$chain_args --name $node_name --base-path /root/data --validator --pruning archive \
+	local chain_data_dir=$(cat $config_json | jq -r '.chain_data_dir')
+	local chain_args=$(cat $config_json | jq -r '.chain_args')
+	local network=$(cat $config_json | jq -r '.network')
+	docker run -d --net host --name chain -e NODE_NAME=$node_name -v $chain_data_dir:/root/data $(get_docker_image chain) \
+		$chain_args --chain $network --name $node_name --base-path /root/data --validator --pruning archive \
 		--port 30666 --rpc-port 9933 --ws-port 9944 --wasm-execution compiled --in-peers 75 --out-peers 75 
 	if [ $? -ne 0 ]; then
 		log_err "----------Start chain failed-------------"

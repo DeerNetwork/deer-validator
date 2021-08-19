@@ -18,6 +18,8 @@ install_scripts()
 		# cp $installdir/config.json $installdir/config.json.bak 
 		# cp $basedir/config.json $installdir/
 		sleep 0
+	else
+		cp $basedir/config.json $installdir/
 	fi
 	cp -r $basedir/scripts $installdir/scripts
 
