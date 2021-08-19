@@ -12,17 +12,18 @@ help()
 {
 cat << EOF
 Usage:
-	help			show help information
-	install			install your deer services
-	uninstall      		uninstall your deer scripts
-	start 			start your deer services
-	stop 			use docker kill to stop module
-	restart 		restart deer services
-	rotate-key 		rotate session keys
-	config			configure your deer 
-	status			display the running status of all components
-	update 			update deer services
-	logs 			show services logs
+	help				show help information
+	install				install your deer services
+	uninstall      			uninstall your deer scripts
+	start 				start your deer services
+	stop 				use docker kill to stop module
+	restart 			restart deer services
+	rotate-key 			rotate session keys
+	config				configure your deer 
+	network	{mainnet|testnet}	choose network
+	status				display the running status of all components
+	update 				update deer services
+	logs 				show services logs
 EOF
 exit 0
 }
@@ -70,6 +71,18 @@ start_chain()
 	fi
 }
 
+set_network() {
+	network=$1
+	if [ x"$network" == x"mainnet" ] || [ x"$network" == x"testnet" ]; then
+		jq '.network = "'$network'"' $config_json | sponge $config_json
+	else
+		log_err "Network must be mainnet or testnet"
+		exit 1
+	fi
+	log_success "Set network: '$network' successfully"
+}
+
+
 chain_status()
 {
 	local node_block=$(curl -sH "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "system_syncState", "params":[]}' http://localhost:9933 | jq '.result.currentBlock')
@@ -87,6 +100,9 @@ case "$1" in
 		;;
 	config)
 		config $2
+		;;
+	network)
+		set_network $2
 		;;
 	start)
 		start_chain

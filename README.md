@@ -17,6 +17,8 @@ sudo ./install.sh
 
 #### Config deer node
 
+> For testnet, Run `sudo deer network testnet`
+
 ```bash
 sudo deer config set
 ```
