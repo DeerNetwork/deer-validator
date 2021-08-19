@@ -2,7 +2,7 @@
 
 #### Preconditions
 
-- Have a account that has some N360 token （You need some N360 to apply validator on-chain）
+- Have a account that has some DEER token （You need some DEER to apply validator on-chain）
 - One Linux server with 32 GB memory and 500GB hard disk
 - A browser with Polkadot{.js} extension, such as Chrome，Firefox
 
