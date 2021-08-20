@@ -1,5 +1,6 @@
 {
   "nodename" : "",
   "chain_data_dir": "",
-  "chain_args": ""
+  "chain_args": "",
+  "network": "mainnet"
 }
