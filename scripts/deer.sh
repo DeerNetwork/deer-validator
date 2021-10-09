@@ -6,6 +6,7 @@ config_json=$installdir/config.json
 
 source $scriptdir/utils.sh
 source $scriptdir/config.sh
+source $scriptdir/update.sh
 source $scriptdir/install_deer.sh
 
 help()
@@ -22,7 +23,7 @@ Usage:
 	config				configure your deer 
 	network	{mainnet|testnet}	choose network
 	status				display the running status of all components
-	update 				update deer services
+	update {scripts|chain} 		update deer
 	logs 				show services logs
 EOF
 exit 0
