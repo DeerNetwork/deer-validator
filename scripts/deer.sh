@@ -12,6 +12,7 @@ source $scriptdir/install_deer.sh
 help()
 {
 cat << EOF
+deer v1.0.0
 Usage:
 	help				show help information
 	install				install your deer services
