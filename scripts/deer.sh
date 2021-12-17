@@ -12,7 +12,7 @@ source $scriptdir/install_deer.sh
 help()
 {
 cat << EOF
-deer v1.0.0
+deer v1.1.0
 Usage:
 	help				show help information
 	install				install your deer services
@@ -49,7 +49,7 @@ start_chain()
 	fi
 	log_info "---------Start chain----------"
 	local node_name=$(cat $config_json | jq -r '.nodename')
-	if [ -z $node_name ]; then
+	if [ -z "$node_name" ]; then
 		config_set_all
 		local node_name=$(cat $config_json | jq -r '.nodename')
 	fi
@@ -64,8 +64,8 @@ start_chain()
 	local chain_data_dir=$(cat $config_json | jq -r '.chain_data_dir')
 	local chain_args=$(cat $config_json | jq -r '.chain_args')
 	local network=$(cat $config_json | jq -r '.network')
-	docker run -d --net host --name chain -e NODE_NAME=$node_name -v $chain_data_dir:/root/data $(get_docker_image chain) \
-		$chain_args --chain $network --name $node_name --base-path /root/data --validator --pruning archive \
+	docker run -d --net host --name chain -e NODE_NAME="$node_name" -v $chain_data_dir:/root/data $(get_docker_image chain) \
+		$chain_args --chain $network --name "$node_name" --base-path /root/data --validator --pruning archive \
 		--port 30666 --rpc-port 9933 --ws-port 9944 --wasm-execution compiled --in-peers 75 --out-peers 75 
 	if [ $? -ne 0 ]; then
 		log_err "----------Start chain failed-------------"
